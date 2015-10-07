@@ -3,6 +3,7 @@
 import sys
 import argparse
 import readline
+from contextlib import suppress
 
 from pyparsing import (
     Word,
@@ -111,10 +112,12 @@ def process_query(query):
 
 def console_entry():
 
-    args = parser.parse_args()
-    if args.run_interactive:
-        interactive_session()
-    else:
-        for line in sys.stdin.readlines():
-            result = process_query(line)
-            print(result)
+    with suppress(KeyboardInterrupt):
+
+        args = parser.parse_args()
+        if args.run_interactive:
+            interactive_session()
+        else:
+            for line in sys.stdin.readlines():
+                result = process_query(line)
+                print(result)
