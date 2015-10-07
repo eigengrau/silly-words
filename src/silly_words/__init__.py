@@ -26,10 +26,10 @@ __all__ = (
 # if wordnet isn’t already available.
 try:
     wordnet.ensure_loaded()
-except:
+except LookupError:
     try:
         nltk.download('wordnet')
-    except BaseException as exc:
+    except OSError as exc:
         raise ImportError("Could not download WordNet:", exc)
 
 
