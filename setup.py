@@ -36,8 +36,8 @@ setup(
     author_email='seb@wirrsal.net',
     url='https://github.com/eigengrau/silly-words',
     install_requires=[
-        'nltk >=3.0, <=3.1',
-        'pyparsing >=2.0, <=2.1'
+        'nltk >=3.0, <3.1',
+        'pyparsing >=2.0, <2.1'
     ],
     packages=['silly_words'],
     package_dir={'': 'src'},
