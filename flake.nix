@@ -16,11 +16,15 @@
           ];
         };
       in rec {
-        packages = { silly-words = pkgs.silly-words; };
-        defaultPackage = packages.silly-words;
-        defaultApp = {
-          type = "app";
-          program = "${packages.silly-words}/bin/silly-words";
+        packages = rec {
+          default = silly-words;
+          silly-words = pkgs.silly-words;
+        };
+        apps = {
+          default = {
+            type = "app";
+            program = "${packages.silly-words}/bin/silly-words";
+          };
         };
       }));
 }
